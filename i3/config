@@ -1,0 +1,102 @@
+# Configurações gerais
+set $mod Mod1
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+# Fonte e Aparência
+font pango:Hack Nerd Font 13
+# font pango:DejaVu Sans Mono 8
+exec_always ~/.config/polybar/launch.sh --grayblocks &
+exec_always feh --bg-fill ~/Downloads/pexels-sebastian-pichard-18776100.jpg
+exec_always picom -b --config ~/.config/picom/picom.conf
+
+# Atalhos de teclado
+bindsym $mod+Return exec termite
+bindsym $mod+q kill
+bindsym $mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+semicolon split toggle
+bindsym $mod+F11 fullscreen toggle
+bindsym $mod+Shift+question layout toggle all
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Áudio e Brilho
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessDown exec brightnessctl s 2-
+bindsym XF86MonBrightnessUp exec brightnessctl s +2
+
+# Configurações de janela
+gaps inner 7 px
+gaps outer 7 px
+smart_gaps inverse_outer
+new_window 1pixel
+for_window [class=".*"] border pixel 0
+
+# Execuções automáticas
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i Imagens/geology.png
+exec --no-startup-id nm-applet
+exec_always ~/.config/run-greenclip.sh
+exec --no-startup-id wal -R &
+exec_always wal -R &
+exec --no-startup-id xrandr --output HDMI-1-0 --auto --pos 2560x0 --output eDP-1 --auto --pos 0x0 --primary
+
+# Bloqueio e Suspensão
+bindsym $mod+Shift+x exec --no-startup-id i3lock -i ~/Imagens/geology.png
+bindsym $mod+Shift+s exec "i3lock -i ~/Imagens/geology.png && sleep 0.7 && systemctl suspend"
+
+# Aplicativos
+exec firefox
+bindsym $mod+f exec firefox
+bindsym $mod+y exec firefox youtube.com
+bindsym $mod+d exec .config/polybar/grayblocks/scripts/launcher.sh
+
+# Outros
+exec --no-startup-id setxkbmap br
+exec_always xmodmap -e "keycode 27 = r R r R bar"
