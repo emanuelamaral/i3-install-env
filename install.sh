@@ -62,17 +62,22 @@ if [ ${#AUSENT_PACMAN_PACKAGES[@]} -gt 0 ]; then
             sudo pacman -S "$package"
         done
         echo "Instalação concluída."
+        
+        read -p "Deseja prosseguir com a configuração do ambiente? (s/n): " choose
 
-        DIR=$(dirname "$0")
-        for file in "${CONFIG_FILES[@]}"; do
-
-          if [ -d "$DIR/$file" ]; then
-              cp -r "$DIR/$file" ~/.config/
-          fi
-        done
-        echo "Configuração concluída."
+        if [ "$choose" = "s" ] || [ "$choose" = "S" ]; then
+            DIR=$(dirname "$0")
+            for file in "${CONFIG_FILES[@]}"; do
+                if [ -d "$DIR/$file" ]; then
+                    cp -r "$DIR/$file" ~/.config/
+                fi
+            done
+            echo "Configuração concluída."
+        else
+            echo "Configuração cancelada."
+        fi
     else
-        echo "Instalação cancelada."
+      echo "Instalação cancelada."
     fi
 else
     echo "Todos os programas estão instalados."
