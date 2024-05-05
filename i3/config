@@ -7,8 +7,10 @@ tiling_drag modifier titlebar
 font pango:Hack Nerd Font 13
 # font pango:DejaVu Sans Mono 8
 exec_always ~/.config/polybar/launch.sh --grayblocks &
-exec_always feh --bg-fill ~/Downloads/pexels-sebastian-pichard-18776100.jpg
-exec_always picom -b --config ~/.config/picom/picom.conf
+exec_always feh --bg-fill ~/Images/background-wallpaper.jpg
+
+# PICOM TRAVANDO I3!!!
+#exec_always picom -b --config ~/.config/picom/picom.conf
 
 # Atalhos de teclado
 bindsym $mod+Return exec termite
@@ -80,16 +82,18 @@ for_window [class=".*"] border pixel 0
 
 # Execuções automáticas
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i Imagens/geology.png
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i ~/Images/lock-screen.png
 exec --no-startup-id nm-applet
 exec_always ~/.config/run-greenclip.sh
 exec --no-startup-id wal -R &
 exec_always wal -R &
-exec --no-startup-id xrandr --output HDMI-1-0 --auto --pos 2560x0 --output eDP-1 --auto --pos 0x0 --primary
+
+# Monitor externo 
+# exec --no-startup-id xrandr --output HDMI-1-0 --auto --pos 2560x0 --output eDP-1 --auto --pos 0x0 --primary
 
 # Bloqueio e Suspensão
-bindsym $mod+Shift+x exec --no-startup-id i3lock -i ~/Imagens/geology.png
-bindsym $mod+Shift+s exec "i3lock -i ~/Imagens/geology.png && sleep 0.7 && systemctl suspend"
+bindsym $mod+Shift+x exec --no-startup-id i3lock -i ~/Images/lock-screen.png
+bindsym $mod+Shift+s exec "i3lock -i ~/Images/lock-screen.png && sleep 0.7 && systemctl suspend"
 
 # Aplicativos
 exec firefox
@@ -99,4 +103,4 @@ bindsym $mod+d exec .config/polybar/grayblocks/scripts/launcher.sh
 
 # Outros
 exec --no-startup-id setxkbmap br
-exec_always xmodmap -e "keycode 27 = r R r R bar"
+#exec_always xmodmap -e "keycode 27 = r R r R bar"

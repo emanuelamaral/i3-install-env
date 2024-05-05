@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PACMAN_PACKAGES_LIST=("thunar" "spectacle" "picom" "kate" "btop" "polybar" "rofi" "i3" "i3lock" "feh" "neovim" "firefox" "python-pywal" "pavucontrol" "pipewire-alsa" "pipewire-pulse")
-YAY_PACKAGES_LIST=("termite" "rofi-greenclip")
+PACMAN_PACKAGES_LIST=("thunar" "spectacle" "picom" "kate" "btop" "polybar" "rofi" "i3" "i3lock" "feh" "neovim" "firefox" "python-pywal" "pavucontrol" "pipewire-alsa" "pipewire-pulse" "sddm" "lxrandr" "ttf-iosevka-nerd" "ttf-fantasque-nerd" "noto-fonts" "ttf-terminus-nerd" "otf-droid-nerd" "nodejs-material-design-icons" )
+YAY_PACKAGES_LIST=("termite" "rofi-greenclip" "ttf-icomoon-feather" "siji-ttf")
 
 CONFIG_FILES=("i3" "greenclip" "nvim" "picom" "polybar" "rofi" "run-greenclip.sh" "termite")
 
@@ -62,26 +62,25 @@ if [ ${#AUSENT_PACMAN_PACKAGES[@]} -gt 0 ]; then
             sudo pacman -S "$package"
         done
         echo "Instalação concluída."
-        
-        read -p "Deseja prosseguir com a configuração do ambiente? (s/n): " choose
-
-        if [ "$choose" = "s" ] || [ "$choose" = "S" ]; then
-            DIR=$(dirname "$0")
-            for file in "${CONFIG_FILES[@]}"; do
-                if [ -d "$DIR/$file" ]; then
-                    cp -r "$DIR/$file" ~/.config/
-                fi
-            done
-            echo "Configuração concluída."
-        else
-            echo "Configuração cancelada."
-        fi
     else
       echo "Instalação cancelada."
     fi
 else
     echo "Todos os programas estão instalados."
 fi
+
+read -p "Deseja prosseguir com a configuração do ambiente? (s/n): " choose
+    if [ "$choose" = "s" ] || [ "$choose" = "S" ]; then
+        DIR=$(dirname "$0")
+        for file in "${CONFIG_FILES[@]}"; do
+            if [ -d "$DIR/$file" ]; then
+                cp -r "$DIR/$file" ~/.config/
+            fi
+        done
+            echo "Configuração concluída."
+    else
+        echo "Configuração cancelada."
+    fi
 
 exit 0
 
