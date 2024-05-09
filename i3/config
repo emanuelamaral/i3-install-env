@@ -8,9 +8,7 @@ font pango:Hack Nerd Font 13
 # font pango:DejaVu Sans Mono 8
 exec_always ~/.config/polybar/launch.sh --grayblocks &
 exec_always feh --bg-fill ~/Images/background-wallpaper.jpg
-
-# PICOM TRAVANDO I3!!!
-#exec_always picom -b --config ~/.config/picom/picom.conf
+# exec_always picom --config ~/.config/picom/picom.conf
 
 # Atalhos de teclado
 bindsym $mod+Return exec termite
@@ -87,6 +85,8 @@ exec --no-startup-id nm-applet
 exec_always ~/.config/run-greenclip.sh
 exec --no-startup-id wal -R &
 exec_always wal -R &
+# exec --no-startup-id xrandr --output HDMI-1-0 --mode 1920x1080 --pos 2560x0 --rate 120 --output eDP-1 --mode 2560x1600 --pos 0x0 --scale 0.65x0.65 --primary
+exec --no-startup-id xrandr --output HDMI-1-0 --auto --rate 120 --pos 2560x0 --output eDP-1 --auto --pos 0x0 --primary
 
 # Monitor externo 
 # exec --no-startup-id xrandr --output HDMI-1-0 --auto --pos 2560x0 --output eDP-1 --auto --pos 0x0 --primary
@@ -95,12 +95,17 @@ exec_always wal -R &
 bindsym $mod+Shift+x exec --no-startup-id i3lock -i ~/Images/lock-screen.png
 bindsym $mod+Shift+s exec "i3lock -i ~/Images/lock-screen.png && sleep 0.7 && systemctl suspend"
 
+
 # Aplicativos
 exec firefox
 bindsym $mod+f exec firefox
 bindsym $mod+y exec firefox youtube.com
 bindsym $mod+d exec .config/polybar/grayblocks/scripts/launcher.sh
+bindsym $mod+k exec kate
+bindsym $mod+b exec termite -e btop
+bindsym $mod+t exec thunar
+bindsym $mod+p exec pavucontrol
 
 # Outros
 exec --no-startup-id setxkbmap br
-#exec_always xmodmap -e "keycode 27 = r R r R bar"
+# exec_always xmodmap -e "keycode 27 = r R r R bar"
