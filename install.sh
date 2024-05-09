@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PACMAN_PACKAGES_LIST=("thunar" "spectacle" "picom" "kate" "btop" "polybar" "rofi" "i3" "i3lock" "feh" "neovim" "firefox" "python-pywal" "pavucontrol" "pipewire-alsa" "pipewire-pulse" "sddm" "lxrandr" "ttf-iosevka-nerd" "ttf-fantasque-nerd" "noto-fonts" "ttf-terminus-nerd" "otf-droid-nerd" "nodejs-material-design-icons" )
-YAY_PACKAGES_LIST=("termite" "rofi-greenclip" "ttf-icomoon-feather" "siji-ttf")
+PACMAN_PACKAGES_LIST=("thunar" "spectacle" "picom" "kate" "btop" "polybar" "rofi" "i3" "i3lock" "feh" "neovim" "firefox" "python-pywal" "pavucontrol" "pipewire-alsa" "pipewire-pulse" "sddm" "lxrandr" "ttf-iosevka-nerd" "ttf-fantasque-nerd" "noto-fonts" "ttf-terminus-nerd" "otf-droid-nerd" "nodejs-material-design-icons" "sddm")
+YAY_PACKAGES_LIST=("termite" "rofi-greenclip" "ttf-icomoon-feather" "siji-ttf" "sddm-theme-astronaut")
 
 CONFIG_FILES=("i3" "greenclip" "nvim" "picom" "polybar" "rofi" "run-greenclip.sh" "termite")
 
